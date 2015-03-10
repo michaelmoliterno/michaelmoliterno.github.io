@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Michael Moliterno</title>
+	<meta name="description" content="">
+	<meta name="author" content="Michael Moliterno">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">Michael Moliterno</a>
+			<ul class="nav">
+					<li><a href="https://michaelmoliterno.github.io/docs/Michael_Moliterno_CV.pdf">cv/résumé</a></li>
+					<li class="active"><a href="/category/blog.html">blog</a></li>
+					<li ><a href="/category/pages.html">pages</a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h4>Find me:</h4>
+			<ul>
+				<li><a href="https://github.com/michaelmoliterno">GitHub</a></li>
+				<li><a href="https://www.linkedin.com/in/michaelmoliterno">LinkedIn</a></li>
+			</ul>
+			</div>
+			<h4>My go-to resources:</h4>
+			<ul>
+				<li><a href="http://python.org/">python</a></li>
+				<li><a href="http://pandas.pydata.org/">pandas</a></li>
+				<li><a href="http://scikit-learn.org/stable/documentation.html">scikit learn</a></li>
+				<li><a href="https://github.com/mbostock/d3/wiki">d3.js</a></li>
+			</ul>
+
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>Visualizing Diabetes Risk with d3.js</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/visualizing-diabetes-risk-with-d3js.html">Visualizing Diabetes Risk with d3.js</a>
+by <a class="url fn" href="/author/michael-moliterno.html">Michael Moliterno </a><br/>
+tags: <a href="/tag/logistic-regression.html">logistic regression</a> <a href="/tag/d3js.html">d3.js</a> <a href="/tag/data-visualization.html">data visualization</a> </div>
+		<div><h3>Predicting the Risk of Type 2 Diabetes</h3>
+<p>I recently revisited <a href="https://www.kaggle.com/c/pf2012-diabetes">an old Kaggle competition</a> that challenged entrants to use electronic health records (EHR) from Practice Fusion's database to identify patients diagnosed with Type 2 Diabetes. Given a set of ~10,000 electronic health records, I developed a set of classifiers for Type 2 Diabetes (an article on this analysis will be posted shortly).  While my models were not as good as the winning models, I was happy with my results; I think would have placed in about the middle of the leaderboard if I had entered when the competition was active.</p>
+<h3>Visualizing Classifiers</h3>
+<p>One of the challenges in using machine learning is communicating results to non-data-nerds.   Support Vector Machines (SVMs) and random forests are nearly impossible to visualize in high dimensions.  Decision trees are fairly easy so visualize, but not useful in many cases.  </p>
+<p>As I was mulling over ideas for visualizations to build in d3.js, I came up with an idea for visualizing a multivariate logistic regression.  By keeping one variable on an axis (in this case BMI), and allowing other variables to be modified with sliders (e.g. age) and radio buttons (e.g. gender), we can see the shape of the logistic regression curve (which we can think of as a risk profile for Type 2 Diabetes).   </p>
+<h3>Logistic Regression with d3.js</h3>
+<p>Check out the visualization I built below.  Some of the features that took a bit of time to build were:
+<em> the brush on the bottom that allows you to zoom into a smaller range on the BMI axis
+</em> the updating values on each axis (when the brush is created and moved)
+<em> the values (and tracking ball/line) that follow your mouse on the screen
+</em> and of course, the dynamic logistic regression that adjusts as input variables are updated</p>
+<p>You can check out the source to the <a href="https://github.com/michaelmoliterno/d3">d3 code on my github</a>.</p>
+<iframe width="910" height="670" display="block" src="/d3/diabetes_logistic_regressions_d3_small.html" style="-webkit-transform:scale(0.8,.8);-moz-transform-scale(0.8,.8);"></iframe></div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; Michael Moliterno</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>
