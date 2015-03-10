@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Michael Moliterno</title>
+	<meta name="description" content="">
+	<meta name="author" content="Michael Moliterno">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">Michael Moliterno</a>
+			<ul class="nav">
+					<li><a href="https://michaelmoliterno.github.io/docs/Michael_Moliterno_CV.pdf">cv/résumé</a></li>
+					<li class="active"><a href="/category/blog.html">blog</a></li>
+					<li ><a href="/category/pages.html">pages</a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h4>Find me:</h4>
+			<ul>
+				<li><a href="https://github.com/michaelmoliterno">GitHub</a></li>
+				<li><a href="https://www.linkedin.com/in/michaelmoliterno">LinkedIn</a></li>
+			</ul>
+			</div>
+			<h4>My go-to resources:</h4>
+			<ul>
+				<li><a href="http://python.org/">python</a></li>
+				<li><a href="http://pandas.pydata.org/">pandas</a></li>
+				<li><a href="http://scikit-learn.org/stable/documentation.html">scikit learn</a></li>
+				<li><a href="https://github.com/mbostock/d3/wiki">d3.js</a></li>
+			</ul>
+
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>Scraping and Searching for Undervalued Movie Stars</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/scraping-and-searching-for-undervalued-movie-stars.html">Scraping and Searching for Undervalued Movie Stars</a>
+by <a class="url fn" href="/author/michael-moliterno.html">Michael Moliterno </a><br/>
+tags: <a href="/tag/python.html">python</a> <a href="/tag/web-scraping.html">web scraping</a> <a href="/tag/beauitifulsoup.html">beauitifulsoup</a> <a href="/tag/linear-regression.html">linear regression</a> <a href="/tag/plotly.html">plotly</a> </div>
+		<div><h3>Scraping Data from Box Office Mojo</h3>
+<p><a href="http://www.boxofficemojo.com/">Box Office Mojo</a> is a website that tracks box office revenue in a systematic, algorithmic way and is widely used within the movie industry as a source of data <a href="https://en.wikipedia.org/wiki/Box_Office_Mojo">source</a>.  </p>
+<p>See my <a href="https://github.com/michaelmoliterno/metis-projects/tree/master/luther">GitHub repo for this project</a> to check out the code that scrapes data for every movie released in the last 25 years (~15,000 titles). <a href="https://github.com/michaelmoliterno/metis-projects/blob/master/luther/luther_utils.py">luther_utils.py</a> has all of the scraping functions, and <a href="http://nbviewer.ipython.org/github/michaelmoliterno/metis-projects/blob/master/luther/BoxOfficeMojoScrape.ipynb">BoxOfficeMojoScrape.ipynb</a> shows how the functions are called. </p>
+<h3>Building the Models</h3>
+<p>Further detail will be added to this post about how features were selected and models were created, but if you want you can check out <a href="http://nbviewer.ipython.org/github/michaelmoliterno/metis-projects/blob/master/luther/MovieAnalysis.ipynb">MovieAnalysis.ipynb</a> to get an idea of the analysis.  </p>
+<h3>Giving plotly a Go with Movie Data</h3>
+<h5>plotly</h5>
+<p>I was recently introduced to an online data visualization tool called <a href="https://plot.ly/">plotly</a>.  Chris Parmer (the Chief Product Officer of Plotly) showed me how, with just a few lines of code you can turn a matplotlib figure (efficient, but not the most striking figures you've ever seen) into an online, interactive, and editable graph. There are option for exporting the graphs you create and modify to python (among others); but even easier, you can embedding them in html (which is how the examples below are being served to you).  d3.js is still going to give you more control to build what you need, but plotly streamlines the process of building good-looking, interactive plots in minutes.  </p>
+<p>Check out plotly's <a href="https://plot.ly/python/getting-started/">getting started with python</a> and <a href="https://plot.ly/matplotlib/">matplotlib/plotly documentation</a> pages for implementation details.  The documentation is great, but just to show you how simple it is: once you have plotly installed, it's literally two line of code to send a plot up to plotly for editing. </p>
+<div class="highlight"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="n">plot_url</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">plot_mpl</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;file_name_for_plotly&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h5>Observations</h5>
+<p>One of the key features that stood out to me was the very clear seasonal boost that box office revenues receive during the summer and holiday seasons.  Based on this observation, I encoded movies released May-July as 'summer' and November-December as 'holiday'. These two features turned out to be highly significant and drastically improved the performance of the models. </p>
+<div>
+    <a href="https://plot.ly/~mmoliterno/22/" target="_blank" title="Average Monthly Box Offices Revenues (1990-2014)" style="display: block; text-align: center;"><img src="https://plot.ly/~mmoliterno/22.png" alt="Average Monthly Box Offices Revenues (1990-2014)" style="max-width: 100%;width: 659px;"  width="659" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="mmoliterno:22" src="https://plot.ly/embed.js" async></script>
+</div>
+
+<p>Once I accounted for budget, theaters in release, season, ans genre, I looked for actors, directors, and writers that significantly moved the needle up (or down) for their movies' box office revenues.  I used a sequential backward elimination methodology (in a self-rolled function) to eliminate features that were not significant until I was left with only significant features.  </p>
+<p>Summarized below is a visualization of those significantly good (or bad) performers.  The multiplier is just like it sounds -- a multiplier on gross box office revenue.  So Will Smith's ~2.1 value means that in that data set we used, his presence accounts for a more than doubling of revenue.  But didn't we already know that?</p>
+<div>
+    <a href="https://plot.ly/~mmoliterno/80/" target="_blank" title="Significant Revenue Multiplers for Hollywood Actors, Directors, and Writers" style="display: block; text-align: center;"><img src="https://plot.ly/~mmoliterno/80.png" alt="Significant Revenue Multiplers for Hollywood Actors, Directors, and Writers" style="max-width: 100%;width: 1179px;"  width="1179" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="mmoliterno:80" src="https://plot.ly/embed.js" async></script></div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; Michael Moliterno</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>
