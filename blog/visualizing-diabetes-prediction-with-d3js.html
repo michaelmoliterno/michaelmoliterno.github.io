@@ -70,16 +70,16 @@ tags: <a href="/tag/logistic-regression.html">logistic regression</a> <a href="/
 <p>One of the challenges in using machine learning is communicating results to colleagues and decision makers that are not data nerds.  Support Vector Machines (SVMs) and random forests are nearly impossible to visualize in high dimensions.  Decision trees are fairly easy to visualize, but they are not particularly useful in many cases.  </p>
 <p>As I was mulling over ideas for visualizations to build in d3.js, I came up with an idea for visualizing a multivariate logistic regression.  By keeping one variable on an axis (e.g. BMI), and allowing other variables to be modified with sliders (e.g. age) and radio buttons (e.g. gender), we can see the shape of the logistic regression curve (which we can think of as a risk profile for Type 2 Diabetes), and even cooler, see how the shape moves as other variables are changed.  </p>
 <h3>Logistic Regression with d3.js</h3>
-<p>Below is d3.js visualization of a simplified version of a logistic regression models that I developed.   The most accurate models I developed had 20+ features, but I decided to keep it simple (which I think makes it more usable and intuitive).  </p>
-<iframe width="910" height="670" src="/images/diabetes_logistic_regressions_d3_small.html"><iframe>
-
-Some of the features that took a bit of time to build were:
-* the brush on the bottom that allows you to zoom into a smaller range on the BMI axis
-* the updating values on each axis (when the brush is created and moved)
-* the values (and tracking ball/line) that follow your mouse on the screen
-* and of course, the dynamic logistic regression that adjusts as input variables are updated
-
-You can check out the source to the [d3 code on my guthub](https://github.com/michaelmoliterno/d3).</div>
+<p>Below is d3.js visualization of a simplified version of a logistic regression models that I developed.   The most accurate models I developed had 20+ features, but I decided to keep it simple (which I think makes it more usable and intuitive).</p>
+<p>Some of the features that took a bit of time to build were:</p>
+<ul>
+<li>the brush on the bottom that allows you to zoom into a smaller range on the BMI axis</li>
+<li>the updating values on each axis (when the brush is created and moved)</li>
+<li>the values (and tracking ball/line) that follow your mouse on the screen</li>
+<li>and of course, the dynamic logistic regression that adjusts as input variables are updated</li>
+</ul>
+<p>You can check out the source to the <a href="https://github.com/michaelmoliterno/d3">d3 code on my github</a>.</p>
+<iframe width="910" height="670" src="/images/diabetes_logistic_regressions_d3_small.html"><iframe></div>
 	</div>
 		<footer>
 		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
