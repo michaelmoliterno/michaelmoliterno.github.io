@@ -32,6 +32,7 @@
 </script>
 </head>
 <body>
+<a href="https://github.com/michaelmoliterno"><img style="position: absolute; top: 39px; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub" /></a>
 	<div class="topbar">
 	  <div class="topbar-inner">
 		<div class="container-fluid">
@@ -73,31 +74,27 @@ by <a class="url fn" href="/author/michael-moliterno.html">Michael Moliterno </a
 tags: <a href="/tag/python.html">python</a> <a href="/tag/web-scraping.html">web scraping</a> <a href="/tag/beauitifulsoup.html">beauitifulsoup</a> <a href="/tag/linear-regression.html">linear regression</a> <a href="/tag/plotly.html">plotly</a> </div>
 		<div><h3>Scraping Data from Box Office Mojo</h3>
 <p><a href="http://www.boxofficemojo.com/">Box Office Mojo</a> is a website that tracks box office revenue in a systematic, algorithmic way and is widely used within the movie industry as a source of data <a href="https://en.wikipedia.org/wiki/Box_Office_Mojo">source</a>.  </p>
-<p>See my <a href="https://github.com/michaelmoliterno/metis-projects/tree/master/luther">GitHub repo for this project</a> to check out the code that scrapes data for every movie released in the last 25 years (~15,000 titles). <a href="https://github.com/michaelmoliterno/metis-projects/blob/master/luther/luther_utils.py">luther_utils.py</a> has all of the scraping functions, and <a href="http://nbviewer.ipython.org/github/michaelmoliterno/metis-projects/blob/master/luther/BoxOfficeMojoScrape.ipynb">BoxOfficeMojoScrape.ipynb</a> demonstates how the functions are called. </p>
+<p>See my <a href="https://github.com/michaelmoliterno/metis-projects/tree/master/luther">GitHub repo for this project</a> to check out the code that scrapes data for every movie released in the last 25 years (~15,000 titles). <a href="https://github.com/michaelmoliterno/metis-projects/blob/master/luther/luther_utils.py">luther_utils.py</a> has all of the scraping functions, and <a href="http://nbviewer.ipython.org/github/michaelmoliterno/metis-projects/blob/master/luther/BoxOfficeMojoScrape.ipynb">BoxOfficeMojoScrape.ipynb</a> shows how the functions are called. </p>
 <h3>Building the Models</h3>
 <p>Further detail will be added to this post about how features were selected and models were created, but if you want you can check out <a href="http://nbviewer.ipython.org/github/michaelmoliterno/metis-projects/blob/master/luther/MovieAnalysis.ipynb">MovieAnalysis.ipynb</a> to get an idea of the analysis.  </p>
-<p>The most important features were budget, the number of theaters in which the movie was released, the season it was released, and a subset of genres (e.g. Animation and 3D). </p>
-<h3>Giving plotly a Go with the Movie Data</h3>
-<h4>plotly</h4>
-<p>I was recently introduced to an online data visualization tool called <a href="https://plot.ly/">plotly</a>.  Chris Parmer (the Chief Product Officer of Plotly) showed me how with just a few lines of code you can turn a matplotlib figure into an online, interactive, and editable graph. There are options for exporting the graphs you create to python; but even easier, you can embed them in html (which is how the examples below are being served to you).  d3.js is still going to give you more control to build what you need, but plotly streamlines the process of building good-looking, interactive plots in just a few minutes.  </p>
-<p>Check out plotly's <a href="https://plot.ly/python/getting-started/">getting started with python</a> and <a href="https://plot.ly/matplotlib/">matplotlib/plotly documentation</a> pages for implementation details.  The documentation is great, but just to show you how simple it is: once you have plotly configured, it's literally two lines of code to send a plot up to plotly for editing. </p>
+<h3>Giving plotly a Go with Movie Data</h3>
+<h5>plotly</h5>
+<p>I was recently introduced to an online data visualization tool called <a href="https://plot.ly/">plotly</a>.  Chris Parmer (the Chief Product Officer of Plotly) showed me how, with just a few lines of code you can turn a matplotlib figure (efficient, but not the most striking figures you've ever seen) into an online, interactive, and editable graph. There are option for exporting the graphs you create and modify to python (among others); but even easier, you can embedding them in html (which is how the examples below are being served to you).  d3.js is still going to give you more control to build what you need, but plotly streamlines the process of building good-looking, interactive plots in minutes.  </p>
+<p>Check out plotly's <a href="https://plot.ly/python/getting-started/">getting started with python</a> and <a href="https://plot.ly/matplotlib/">matplotlib/plotly documentation</a> pages for implementation details.  The documentation is great, but just to show you how simple it is: once you have plotly installed, it's literally two line of code to send a plot up to plotly for editing. </p>
 <div class="highlight"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
 <span class="n">plot_url</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">plot_mpl</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;file_name_for_plotly&#39;</span><span class="p">)</span>
 </pre></div>
 
 
-<h4>Observations</h4>
-<h5>The summer and holiday movie effect is very real</h5>
+<h5>Observations</h5>
 <p>One of the key features that stood out to me was the very clear seasonal boost that box office revenues receive during the summer and holiday seasons.  Based on this observation, I encoded movies released May-July as 'summer' and November-December as 'holiday'. These two features turned out to be highly significant and drastically improved the performance of the models. </p>
 <div>
     <a href="https://plot.ly/~mmoliterno/22/" target="_blank" title="Average Monthly Box Offices Revenues (1990-2014)" style="display: block; text-align: center;"><img src="https://plot.ly/~mmoliterno/22.png" alt="Average Monthly Box Offices Revenues (1990-2014)" style="max-width: 100%;width: 659px;"  width="659" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
     <script data-plotly="mmoliterno:22" src="https://plot.ly/embed.js" async></script>
 </div>
 
-<h5>The most (and least) valuable movie stars of the past 25 years</h5>
-<p>Once I accounted for budget, theaters in release, season, and some statistically significant genres, I looked for actors, directors, and writers that significantly moved the needle up (or down) for their movies' box office revenues.  I used a sequential backward elimination methodology (in a self-rolled function) to eliminate actors, directors, and writers that were not significant.  </p>
-<p>Summarized below is a visualization of those significantly good (or bad) performers.  The multiplier is just like it sounds -- a multiplier on gross box office revenue.  So Will Smith's ~2.1 value means that in that data set we used, his presence accounts for a more than doubling of revenue.  But that’s probably not a surprise to most of us.  </p>
-<p>Check out the plot to see where some well known (and lesser known) movies stars rank.   You can also see the top (or bottom) three movies that contributed most heavily to the multiplier. </p>
+<p>Once I accounted for budget, theaters in release, season, ans genre, I looked for actors, directors, and writers that significantly moved the needle up (or down) for their movies' box office revenues.  I used a sequential backward elimination methodology (in a self-rolled function) to eliminate features that were not significant until I was left with only significant features.  </p>
+<p>Summarized below is a visualization of those significantly good (or bad) performers.  The multiplier is just like it sounds -- a multiplier on gross box office revenue.  So Will Smith's ~2.1 value means that in that data set we used, his presence accounts for a more than doubling of revenue.  But didn't we already know that?</p>
 <div>
     <a href="https://plot.ly/~mmoliterno/80/" target="_blank" title="Significant Revenue Multiplers for Hollywood Actors, Directors, and Writers" style="display: block; text-align: center;"><img src="https://plot.ly/~mmoliterno/80.png" alt="Significant Revenue Multiplers for Hollywood Actors, Directors, and Writers" style="max-width: 100%;width: 1179px;"  width="1179" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
     <script data-plotly="mmoliterno:80" src="https://plot.ly/embed.js" async></script></div>

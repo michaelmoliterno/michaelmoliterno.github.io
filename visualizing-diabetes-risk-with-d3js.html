@@ -32,6 +32,7 @@
 </script>
 </head>
 <body>
+<a href="https://github.com/michaelmoliterno"><img style="position: absolute; top: 39px; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub" /></a>
 	<div class="topbar">
 	  <div class="topbar-inner">
 		<div class="container-fluid">
@@ -72,21 +73,18 @@
 by <a class="url fn" href="/author/michael-moliterno.html">Michael Moliterno </a><br/>
 tags: <a href="/tag/logistic-regression.html">logistic regression</a> <a href="/tag/d3js.html">d3.js</a> <a href="/tag/data-visualization.html">data visualization</a> </div>
 		<div><h3>Predicting the Risk of Type 2 Diabetes</h3>
-<p>I recently revisited <a href="https://www.kaggle.com/c/pf2012-diabetes">an old Kaggle competition</a> that challenged entrants to use electronic health records (EHR) from Practice Fusion's database to identify patients diagnosed with Type 2 Diabetes. Given a set of ~10,000 electronic health records, I developed a set of classifiers for Type 2 Diabetes (an article on this process will be posted shortly).  While my classifiers were not quite as good as the winning models, I was happy with my results; I think would have placed in about the middle of the leaderboard if I had entered when the competition was active.</p>
+<p>I recently revisited <a href="https://www.kaggle.com/c/pf2012-diabetes">an old Kaggle competition</a> that challenged entrants to use electronic health records (EHR) from Practice Fusion's database to identify patients diagnosed with Type 2 Diabetes. Given a set of ~10,000 electronic health records, I developed a set of classifiers for Type 2 Diabetes (an article on this analysis will be posted shortly).  While my models were not as good as the winning models, I was happy with my results; I think would have placed in about the middle of the leaderboard if I had entered when the competition was active.</p>
 <h3>Visualizing Classifiers</h3>
-<p>One of the challenges in using machine learning is communicating results to colleagues and decision makers that are not data nerds.  Support Vector Machines (SVMs) and Random Forests are nearly impossible to visualize in high dimensions.  Decision trees are fairly easy to visualize, but they are not particularly useful in many cases.  </p>
-<p>As I was mulling over ideas for a fun visualization to build in d3.js, I came up with an idea for visualizing a multivariate logistic regression.  By keeping one variable on an axis (e.g. BMI), and allowing other variables to be modified with sliders (e.g. age) and radio buttons (e.g. gender), we can see the shape of the logistic regression curve, which we can think of as a risk profile for Type 2 Diabetes).  Even cooler, we can see how the shape of the curve moves as the variables are changed.  </p>
+<p>One of the challenges in using machine learning is communicating results to non-data-nerds.   Support Vector Machines (SVMs) and random forests are nearly impossible to visualize in high dimensions.  Decision trees are fairly easy so visualize, but not useful in many cases.  </p>
+<p>As I was mulling over ideas for visualizations to build in d3.js, I came up with an idea for visualizing a multivariate logistic regression.  By keeping one variable on an axis (in this case BMI), and allowing other variables to be modified with sliders (e.g. age) and radio buttons (e.g. gender), we can see the shape of the logistic regression curve (which we can think of as a risk profile for Type 2 Diabetes).   </p>
 <h3>Logistic Regression with d3.js</h3>
-<p>Below is d3.js visualization of a simplified version of a logistic regression model that I developed.   The most accurate models I developed had 20+ features, but for the visualization, I decided to keep it simple (which I think makes it more usable and intuitive).</p>
-<p>Some of the features that took a bit of time to build were:</p>
-<ul>
-<li>the brush on the bottom that allows you to zoom into a smaller range on the BMI axis</li>
-<li>the updating values on each axis (when the brush is created and moved)</li>
-<li>the values (and tracking ball/line) that follow your mouse on the screen</li>
-<li>and of course, the dynamic logistic regression that adjusts as input variables are updated</li>
-</ul>
-<p>You can check out the source to the d3 code on <a href="https://github.com/michaelmoliterno/d3">my github</a>.</p>
-<iframe width="710" height="570" src="/images/diabetes_logistic_regressions_d3_small.html"><iframe></div>
+<p>Check out the visualization I built below.  Some of the features that took a bit of time to build were:
+<em> the brush on the bottom that allows you to zoom into a smaller range on the BMI axis
+</em> the updating values on each axis (when the brush is created and moved)
+<em> the values (and tracking ball/line) that follow your mouse on the screen
+</em> and of course, the dynamic logistic regression that adjusts as input variables are updated</p>
+<p>You can check out the source to the <a href="https://github.com/michaelmoliterno/d3">d3 code on my github</a>.</p>
+<iframe width="910" height="670" display="block" src="http://bl.ocks.org/michaelmoliterno/raw/4d56c6b984dba9e2f44f/" style="-webkit-transform:scale(0.8,.8);-moz-transform-scale(0.8,.8);"></iframe></div>
 		<div>
 			<h2>Comments</h2>
 <div id="disqus_thread"></div><!-- 			 -->
