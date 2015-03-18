@@ -68,24 +68,24 @@
 	  </div>
 	  <div class="content">
 	<div class='article span16'>
-		<div class="page-header"><h1>How to set up a Python Cron Job</h1></div>
-		<div class="well small">Permalink: <a class="more" href="/how-to-set-up-a-python-cron-job.html">How to set up a Python Cron Job</a>
+		<div class="page-header"><h1>How to set up a python Cron job</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/how-to-set-up-a-python-cron-job.html">How to set up a python Cron job</a>
 by <a class="url fn" href="/author/michael-moliterno.html">Michael Moliterno </a><br/>
 tags: <a href="/tag/python.html">python</a> <a href="/tag/cron-job.html">cron job</a> </div>
-		<div><h3>Why set up a Cron Job?</h3>
+		<div><h3>Why set up a Cron job?</h3>
 <p>If you have a script that you want to run regularly, but don’t want to have to manually start it, you can use Cron.  Per <a href="https://en.wikipedia.org/wiki/Cron">Wikipedia</a>, “the software utility Cron is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environments use cron to schedule jobs (commands or shell scripts) to run periodically at fixed times, dates, or intervals.”</p>
 <h3>A few quick steps</h3>
 <h4>Step 0: Ensure the file you want to run is on the host server/computer</h4>
 <p>Ensure that the python file (e.g. script_to_run_with_cron.py) is on the server/computer that will be running the script via Cron.  I use SCP for this task, and always find myself referencing <a href="http://www.hypexr.org/linux_scp_help.php">this documentation</a>.  </p>
 <h4>Step 1: Ensure the proper interpreter is used for your script</h4>
-<p>To ensure that your server knows to run the script using python, make sure that the very first line of  file_to_run_with_cron.py is this:</p>
+<p>To ensure that your server knows to run the script using python, make sure that the very first line of file_to_run_with_cron.py is this:</p>
 <div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 </pre></div>
 
 
 <h4>Step 2: Make the file executable</h4>
 <p>To run your file via Cron, it has to be executable.  This can be done from a shell with this quick command:</p>
-<div class="highlight"><pre>chmod a+x file_to_run_with_cron.py
+<div class="highlight"><pre>chmod +x file_to_run_with_cron.py
 </pre></div>
 
 
@@ -95,12 +95,12 @@ tags: <a href="/tag/python.html">python</a> <a href="/tag/cron-job.html">cron jo
 </pre></div>
 
 
-<p>If you’ve never set up a Cron job, there will not be any uncommented (commented lines begin with ‘#’) lines in the file.  All you need to do is add a line that tells your server when and what to run; follow <a href="http://www.adminschoice.com/crontab-quick-reference">this documentation</a> for all of the configuration options.  For example, this would run file_to_run_with_cron.py every 30 minutes:</p>
+<p>If you’ve never set up a Cron job, there will be no uncommented lines (commented lines begin with ‘#’)  in the file.  All you need to do is add a line that tells your server when and what to run; follow <a href="http://www.adminschoice.com/crontab-quick-reference">this documentation</a> for all of the configuration options.  For example, this would run file_to_run_with_cron.py every 30 minutes:</p>
 <div class="highlight"><pre>*/30 * * * * /home/michael/python_project/file_to_run_with_cron.py
 </pre></div>
 
 
-<p>The first ‘*’ was required for my script to run even though it was missing from some other examples I found online. </p>
+<p>The first ‘*’ was required for my script to run even though it was missing from some other examples I found online.  If you want to stop your Cron job but keep it for future use, just open the crontab file and comment the job out (and maybe leave a comment in there for when you find it in 3 months…). </p>
 <h4>All set!</h4>
 <p>Once you save and close the crontab file, you’re all set.  Now you can set up jobs to run in the middle of the night or weekends so that your server is working for you while you are not working at all!</p></div>
 		<div>
