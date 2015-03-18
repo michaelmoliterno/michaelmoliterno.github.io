@@ -266,7 +266,7 @@
     //build our canvas
 
     var margin = {top: 10, right: 60, bottom: 120, left: 50},
-    margin2 = {top: 350, right: 60, bottom: 30, left: 50},
+    margin2 = {top: 330, right: 60, bottom: 60, left: 50},
     width = 700 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom,
     height2 = 450 - margin2.top - margin2.bottom;
@@ -328,7 +328,7 @@
       .data(pdata)
       .enter()
       .append("rect")
-      .attr("x", width+145)
+      .attr("x", width+150)
       .attr("y", function(d, i){ return i *  30;})
       .attr("width", 20)
       .attr("height", 20)
@@ -341,7 +341,7 @@
       .data(pdata)
       .enter()
       .append("text")
-      .attr("x", width + 175)
+      .attr("x", width + 180)
       .attr("y", function(d, i){ return i * 30 + 15;})
       .text(function(d) {
         var text = color_hash[pdata.indexOf(d)][2];
